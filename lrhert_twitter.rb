@@ -65,7 +65,7 @@ class TwitterBase
   end
 end
 
-class LRHERAT
+class LrHeart
   attr_reader :selected_culture
   attr_reader :select
 
@@ -84,12 +84,12 @@ class LRHERAT
 
   # ポストする範囲を指定する
   def select
-    @select = rand(106)
+    @select = rand(56)
   end
 end
 
-twitter_base     = TwitterBase.new
-lrhert   = LRHEART.new
+twitter_base = TwitterBase.new
+lrhert       = LrHeart.new
 
 content  = lrhert.random_select
 head     = lrhert.head
