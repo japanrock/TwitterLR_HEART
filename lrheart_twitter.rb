@@ -75,7 +75,7 @@ class LrHeart
 
   # ここはあとでリファクタリング・・・微妙なので・・・
   def head
-    "[lrheart]"
+    ""
   end
 
   def random_select
