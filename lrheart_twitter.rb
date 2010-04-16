@@ -84,7 +84,7 @@ class LrHeart
 
   # ポストする範囲を指定する
   def select
-    @select = rand(56)
+    @select = rand(84)
   end
 end
 
