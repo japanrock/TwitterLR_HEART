@@ -27,7 +27,7 @@ class LrHeart
   attr_reader :select
 
   def initialize
-    @culture = YAML.load_file(File.dirname(__FILE__) +  '/lrhert.yml')
+    @culture = YAML.load_file(File.dirname(__FILE__) +  '/lrheart.yml')
   end
 
   def head
