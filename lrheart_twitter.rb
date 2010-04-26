@@ -20,7 +20,7 @@ require File.dirname(__FILE__) + '/twitter_oauth'
 # * lrheart.yml
 # * http://github.com/japanrock/TwitterLR_HEART/blob/master/lrheart.yml 
 # 2. このファイルを実行します。
-# ruby lrhert_twitter.rb
+# ruby lrheart_twitter.rb
 
 class LrHeart
   attr_reader :selected_culture
