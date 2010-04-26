@@ -44,12 +44,12 @@ class LrHeart
   end
 end
 
-twitter_base = TwitterBase.new
-lrhert       = LrHeart.new
+twitter_oauth = TwitterOauth.new
+lrhert        = LrHeart.new
 
 content  = lrhert.random_select
 head     = lrhert.head
 url      = lrhert.selected_culture["url"]
 contents = lrhert.selected_culture["contents"]
 
-twitter_base.post(head + contents + " - " + url)
+twitter_oauth.post(head + contents + " - " + url)
