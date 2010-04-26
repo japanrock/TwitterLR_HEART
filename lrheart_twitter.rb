@@ -11,70 +11,25 @@ require 'parsedate'
 require "kconv"
 require File.dirname(__FILE__) + '/twitter_oauth'
 
-### TODO:
-###  ・TwitterBaseクラスはあとで外に出す
-
 # Usage:
-# ruby lrhert_twitter.rb /path/to/sercret_key.yml /path/to/lrhert.yml
-
-
-# TwitterのAPIとのやりとりを行うクラス
-class TwitterBase
-  def initialize
-    # config.yml内のsercret_keys.ymlをloadします。
-    @secret_keys = YAML.load_file(ARGV[0] || 'sercret_key.yml')
-  end
-  
-  def consumer_key
-    @secret_keys["ConsumerKey"]
-  end
-
-  def consumer_secret
-    @secret_keys["ConsumerSecret"]
-  end
-
-  def access_token_key
-    @secret_keys["AccessToken"]
-  end
-
-  def access_token_secret
-    @secret_keys["AccessTokenSecret"]
-  end
-
-  def consumer
-    @consumer = OAuth::Consumer.new(
-      consumer_key,
-      consumer_secret,
-      :site => 'http://twitter.com'
-    )
-  end
-
-  def access_token
-    consumer
-    access_token = OAuth::AccessToken.new(
-      @consumer,
-      access_token_key,
-      access_token_secret
-    )
-  end
-
-  def post(tweet=nil)
-    response = access_token.post(
-      'http://twitter.com/statuses/update.json',
-      'status'=> tweet
-    )
-  end
-end
+# 1. このファイルと同じディレクトリに以下３つのファイルを設置します。
+# * twitter_oauth.rb
+# * http://github.com/japanrock/TwitterTools/blob/master/twitter_oauth.rb
+# * sercret_key.yml
+# * http://github.com/japanrock/TwitterTools/blob/master/secret_keys.yml.example
+# * lrheart.yml
+# * http://github.com/japanrock/TwitterLR_HEART/blob/master/lrheart.yml 
+# 2. このファイルを実行します。
+# ruby lrhert_twitter.rb
 
 class LrHeart
   attr_reader :selected_culture
   attr_reader :select
 
   def initialize
-    @culture = YAML.load_file(ARGV[1] || 'lrhert.yml')
+    @culture = YAML.load_file(File.dirname(__FILE__) +  '/lrhert.yml')
   end
 
-  # ここはあとでリファクタリング・・・微妙なので・・・
   def head
     ""
   end
