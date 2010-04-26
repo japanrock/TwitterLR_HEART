@@ -9,18 +9,19 @@ require 'open-uri'
 require 'yaml'
 require 'parsedate'
 require "kconv"
+require File.dirname(__FILE__) + '/twitter_oauth'
 
 ### TODO:
-###  ¡¦TwitterBase¥¯¥é¥¹¤Ï¤¢¤È¤Ç³°¤Ë½Ğ¤¹
+###  ãƒ»TwitterBaseã‚¯ãƒ©ã‚¹ã¯ã‚ã¨ã§å¤–ã«å‡ºã™
 
 # Usage:
 # ruby lrhert_twitter.rb /path/to/sercret_key.yml /path/to/lrhert.yml
 
 
-# Twitter¤ÎAPI¤È¤Î¤ä¤ê¤È¤ê¤ò¹Ô¤¦¥¯¥é¥¹
+# Twitterã®APIã¨ã®ã‚„ã‚Šã¨ã‚Šã‚’è¡Œã†ã‚¯ãƒ©ã‚¹
 class TwitterBase
   def initialize
-    # config.ymlÆâ¤Îsercret_keys.yml¤òload¤·¤Ş¤¹¡£
+    # config.ymlå†…ã®sercret_keys.ymlã‚’loadã—ã¾ã™ã€‚
     @secret_keys = YAML.load_file(ARGV[0] || 'sercret_key.yml')
   end
   
@@ -73,7 +74,7 @@ class LrHeart
     @culture = YAML.load_file(ARGV[1] || 'lrhert.yml')
   end
 
-  # ¤³¤³¤Ï¤¢¤È¤Ç¥ê¥Õ¥¡¥¯¥¿¥ê¥ó¥°¡¦¡¦¡¦ÈùÌ¯¤Ê¤Î¤Ç¡¦¡¦¡¦
+  # ã“ã“ã¯ã‚ã¨ã§ãƒªãƒ•ã‚¡ã‚¯ã‚¿ãƒªãƒ³ã‚°ãƒ»ãƒ»ãƒ»å¾®å¦™ãªã®ã§ãƒ»ãƒ»ãƒ»
   def head
     ""
   end
@@ -82,7 +83,7 @@ class LrHeart
     @selected_culture = @culture[select]
   end
 
-  # ¥İ¥¹¥È¤¹¤ëÈÏ°Ï¤ò»ØÄê¤¹¤ë
+  # ãƒã‚¹ãƒˆã™ã‚‹ç¯„å›²ã‚’æŒ‡å®šã™ã‚‹
   def select
     @select = rand(84)
   end
